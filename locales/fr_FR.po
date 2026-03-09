@@ -1,0 +1,195 @@
+# GLPI BetterFAQ Plugin - Français
+# Copyright (C) DSI
+# This file is distributed under the same license as the GLPI package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: betterfaq 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-01 00:00+0000\n"
+"PO-Revision-Date: 2024-01-01 00:00+0000\n"
+"Last-Translator: DSI\n"
+"Language-Team: French\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "FAQ"
+msgstr "FAQ"
+
+msgid "FAQ - Permissions"
+msgstr "FAQ - Permissions"
+
+msgid "FAQ plugin"
+msgstr "Plugin FAQ"
+
+msgid "Manage FAQ configuration"
+msgstr "Gérer la configuration de la FAQ"
+
+msgid "View FAQ"
+msgstr "Voir la FAQ"
+
+msgid "Global Settings"
+msgstr "Paramètres généraux"
+
+msgid "Category Icons"
+msgstr "Icônes des catégories"
+
+msgid "Hero Title"
+msgstr "Titre principal"
+
+msgid "Hero Subtitle"
+msgstr "Sous-titre"
+
+msgid "Primary Color"
+msgstr "Couleur principale"
+
+msgid "Category"
+msgstr "Catégorie"
+
+msgid "Icon"
+msgstr "Icône"
+
+msgid "Color"
+msgstr "Couleur"
+
+msgid "Featured"
+msgstr "Mise en avant"
+
+msgid "Sort Order"
+msgstr "Ordre de tri"
+
+msgid "FAQ"
+msgstr "FAQ"
+
+msgid "Search the FAQ..."
+msgstr "Rechercher dans la FAQ..."
+
+msgid "Search"
+msgstr "Rechercher"
+
+msgid "No FAQ categories available."
+msgstr "Aucune catégorie FAQ disponible."
+
+msgid "%d article"
+msgid_plural "%d articles"
+msgstr[0] "%d article"
+msgstr[1] "%d articles"
+
+msgid "Categories"
+msgstr "Catégories"
+
+msgid "Subcategories"
+msgstr "Sous-catégories"
+
+msgid "Articles"
+msgstr "Articles"
+
+msgid "No articles in this category."
+msgstr "Aucun article dans cette catégorie."
+
+msgid "Updated"
+msgstr "Mis à jour"
+
+msgid "%d views"
+msgstr "%d vues"
+
+msgid "Back to category"
+msgstr "Retour à la catégorie"
+
+msgid "Back to FAQ"
+msgstr "Retour à la FAQ"
+
+msgid "Search Results"
+msgstr "Résultats de recherche"
+
+msgid "Enter a search term above."
+msgstr "Saisissez un terme de recherche ci-dessus."
+
+msgid "No results found for \"%s\"."
+msgstr "Aucun résultat trouvé pour « %s »."
+
+msgid "%d result found"
+msgid_plural "%d results found"
+msgstr[0] "%d résultat trouvé"
+msgstr[1] "%d résultats trouvés"
+
+msgid "for \"%s\""
+msgstr "pour « %s »"
+
+msgid "Global settings saved."
+msgstr "Paramètres généraux enregistrés."
+
+msgid "Category settings saved."
+msgstr "Paramètres des catégories enregistrés."
+
+msgid "FAQ Configuration"
+msgstr "Configuration FAQ"
+
+msgid "No knowledge base categories found. Create categories in Setup > Dropdowns > Knowledge base categories."
+msgstr "Aucune catégorie de base de connaissances trouvée. Créez des catégories dans Configuration > Intitulés > Catégories de la base de connaissances."
+
+msgid "Customize icons and colors for root-level knowledge base categories. Icons can be Tabler icon classes (e.g. ti ti-server) or emoji."
+msgstr "Personnalisez les icônes et couleurs des catégories racines. Les icônes peuvent être des classes Tabler (ex : ti ti-server) ou des emoji."
+
+msgid "Newest Articles"
+msgstr "Articles les plus récents"
+
+msgid "Most Viewed Articles"
+msgstr "Articles les plus consultés"
+
+msgid "Sort by:"
+msgstr "Trier par :"
+
+msgid "Most Viewed"
+msgstr "Plus consultés"
+
+msgid "Newest"
+msgstr "Plus récents"
+
+msgid "Choose a category"
+msgstr "Choisir une catégorie"
+
+msgid "Back"
+msgstr "Retour"
+
+msgid "Top"
+msgstr "Haut"
+
+msgid "Category Images"
+msgstr "Images des catégories"
+
+msgid "Current Image"
+msgstr "Image actuelle"
+
+msgid "Upload New Image"
+msgstr "Télécharger une nouvelle image"
+
+msgid "Remove"
+msgstr "Supprimer"
+
+msgid "None"
+msgstr "Aucune"
+
+msgid "Select a subcategory"
+msgstr "Sélectionner une sous-catégorie"
+
+msgid "Upload an image for each root-level knowledge base category. Images are displayed on the FAQ home page."
+msgstr "Téléchargez une image pour chaque catégorie racine de la base de connaissances. Les images s'affichent sur la page d'accueil de la FAQ."
+
+msgid "More in this category"
+msgstr "Plus d'articles dans cette catégorie"
+
+msgid "Search Results for \"%s\""
+msgstr "Résultats de recherche pour « %s »"
+
+msgid "Need more help?"
+msgstr "Besoin d'aide ?"
+
+msgid "Browse our service catalog for additional resources"
+msgstr "Parcourez notre catalogue de services pour plus de ressources"
+
+msgid "Visit Service Catalog"
+msgstr "Visiter le catalogue de services"
