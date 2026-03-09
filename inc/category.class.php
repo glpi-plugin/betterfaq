@@ -42,7 +42,21 @@ class PluginBetterfaqCategory {
                $visible[(int) $r['knowbaseitems_id']] = true;
             }
          } elseif ($entity_id > 0) {
-            foreach ($DB->request(['SELECT' => 'knowbaseitems_id', 'FROM' => 'glpi_entities_knowbaseitems', 'WHERE' => ['entities_id' => $entity_id]]) as $r) {
+            // Get ancestor entities to check recursive targets
+            $ancestor_ids = array_keys(getAncestorsOf('glpi_entities', $entity_id));
+
+            $where = ['OR' => [
+               ['entities_id' => $entity_id],
+            ]];
+
+            if (!empty($ancestor_ids)) {
+               $where['OR'][] = [
+                  'entities_id'  => $ancestor_ids,
+                  'is_recursive' => 1,
+               ];
+            }
+
+            foreach ($DB->request(['SELECT' => 'knowbaseitems_id', 'FROM' => 'glpi_entities_knowbaseitems', 'WHERE' => $where]) as $r) {
                $visible[(int) $r['knowbaseitems_id']] = true;
             }
          }

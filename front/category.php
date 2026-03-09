@@ -73,6 +73,13 @@ if (!empty($search_query)) {
    $articles = PluginBetterfaqCategory::searchArticles($search_query, 200);
 }
 
+// Pagination
+$per_page       = 10;
+$total_articles = count($articles);
+$total_pages    = max(1, (int) ceil($total_articles / $per_page));
+$page           = isset($_GET['page']) ? max(1, min((int) $_GET['page'], $total_pages)) : 1;
+$articles       = array_slice($articles, ($page - 1) * $per_page, $per_page);
+
 // Get active path IDs for auto-expanding sidebar
 $active_ids = [];
 foreach ($breadcrumb as $bc) {
@@ -398,7 +405,7 @@ if ($interface === 'helpdesk') {
    display: flex;
    align-items: center;
    border-bottom: 1px solid var(--bs-border-color, #e5e7eb);
-   padding: 16px 0;
+   padding: 7px;
 }
 
 .bfaq-article-row a {
@@ -424,7 +431,7 @@ if ($interface === 'helpdesk') {
    padding: 20px;
 }
 .bfaq-related-articles h3 {
-   font-size: 1rem;
+   font-size: 1.5rem;
    font-weight: 600;
    color: var(--tblr-muted, #6c757d);
    text-transform: uppercase;
@@ -580,6 +587,30 @@ if ($interface === 'helpdesk') {
 .breadcrumb-item + .breadcrumb-item::before {
    content: ">" !important;
 }
+
+/* Pagination */
+.bfaq-pagination {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   gap: 16px;
+   padding: 16px 0 4px 0;
+   font-size: 0.95em;
+}
+.bfaq-pagination a {
+   color: var(--glpi-mainmenu-bg, var(--bs-primary, #2f3f64));
+   text-decoration: none;
+   padding: 6px 14px;
+   border: 1px solid var(--bs-border-color, #d1d5db);
+   border-radius: 4px;
+   transition: background 0.15s;
+}
+.bfaq-pagination a:hover {
+   background: var(--bs-secondary-bg, #f3f4f6);
+}
+.bfaq-pagination span {
+   color: var(--bs-body-color, #6b7280);
+}
 </style>
 
 <div class="bfaq-layout">
@@ -693,6 +724,27 @@ if ($interface === 'helpdesk') {
                      </div>
                   <?php endforeach; ?>
                </div>
+               <?php
+               $page_base_url = $base_url . '/front/category.php?id=' . $id;
+               if (!empty($search_query)) {
+                  $page_base_url .= '&q=' . urlencode($search_query);
+               }
+               ?>
+               <?php if ($total_pages > 1): ?>
+                  <div class="bfaq-pagination">
+                     <?php if ($page > 1): ?>
+                        <a href="<?php echo htmlspecialchars($page_base_url . '&page=' . ($page - 1), ENT_QUOTES, 'UTF-8'); ?>">
+                           &lsaquo; <?php echo __('Previous', 'betterfaq'); ?>
+                        </a>
+                     <?php endif; ?>
+                     <span><?php echo $page; ?> / <?php echo $total_pages; ?></span>
+                     <?php if ($page < $total_pages): ?>
+                        <a href="<?php echo htmlspecialchars($page_base_url . '&page=' . ($page + 1), ENT_QUOTES, 'UTF-8'); ?>">
+                           <?php echo __('Next', 'betterfaq'); ?> &rsaquo;
+                        </a>
+                     <?php endif; ?>
+                  </div>
+               <?php endif; ?>
             </div>
          <?php else: ?>
             <div class="text-center py-5 text-muted">
