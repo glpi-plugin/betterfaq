@@ -502,4 +502,61 @@ class PluginBetterfaqCategory {
       $hidden = self::getHiddenArticleIds();
       return self::filterByVisibility($articles, $hidden);
    }
+
+   public static function renderTree($tree, $active_ids, $base_url, $current_id = 0, $config_map = []) {
+      if (empty($tree)) {
+         return '';
+      }
+      $html = '<ul>';
+      foreach ($tree as $node) {
+         $html .= self::renderNode($node, $active_ids, $base_url, $current_id, 0, $config_map);
+      }
+      $html .= '</ul>';
+      return $html;
+   }
+
+   public static function renderNode($node, $active_ids, $base_url, $current_id = 0, $depth = 0, $config_map = []) {
+      $node_id      = (int) $node['id'];
+      $has_children = !empty($node['children']);
+      $is_active    = $node_id === (int) $current_id;
+      $in_path      = in_array($node_id, $active_ids, true);
+
+      // Get icon from config
+      $icon = $config_map[$node_id]['icon'] ?? 'ti ti-folder';
+      if (!empty($icon)) {
+         if (strpos($icon, 'ti ') === 0) {
+            $icon = '<i class="' . htmlspecialchars($icon, ENT_QUOTES, 'UTF-8') . '"></i>';
+         } elseif (strpos($icon, '<i') === false) {
+            $icon = htmlspecialchars($icon, ENT_QUOTES, 'UTF-8');
+         }
+      } else {
+         $icon = '<i class="ti ti-folder"></i>';
+      }
+
+      $html = '<li>';
+
+      if ($has_children) {
+         $is_expanded  = ($in_path || $is_active) ? 'true' : 'false';
+         $toggle_class = ($in_path || $is_active) ? ' expanded' : '';
+         $html .= '<button type="button" aria-expanded="' . $is_expanded . '" aria-pressed="false">'
+            . '<span class="bfaq-button-text">' . htmlspecialchars($node['name'], ENT_QUOTES, 'UTF-8') . '</span>'
+            . '<span class="bfaq-tree-toggle' . $toggle_class . '"><i class="ti ti-chevron-down"></i></span>'
+            . '</button>';
+
+         $display = ($in_path || $is_active) ? '' : ' style="display:none"';
+         $html .= '<ul' . $display . '>';
+         foreach ($node['children'] as $child) {
+            $html .= self::renderNode($child, $active_ids, $base_url, $current_id, $depth + 1, $config_map);
+         }
+         $html .= '</ul>';
+      } else {
+         $active_class = $is_active ? ' class="active"' : '';
+         $html .= '<a href="' . htmlspecialchars($base_url . '/front/index.php?id=' . $node_id, ENT_QUOTES, 'UTF-8') . '"' . $active_class . '>'
+            . '<span class="bfaq-button-text">' . htmlspecialchars($node['name'], ENT_QUOTES, 'UTF-8') . '</span>'
+            . '</a>';
+      }
+
+      $html .= '</li>';
+      return $html;
+   }
 }
